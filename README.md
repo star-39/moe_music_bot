@@ -1,6 +1,9 @@
 # moe_music_bot
 Get all your musics to Telegram without effort!
 
+![Screenshot 2021-05-04 184640](https://user-images.githubusercontent.com/75669297/116986761-290d9900-ad09-11eb-949b-ce7fa025ab3e.png)
+
+
 ## Dependencies
 * cc
 * pkg-config
