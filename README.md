@@ -7,6 +7,16 @@ Get all your musics to Telegram without effort!
 * taglib
 * [telebot](https://github.com/tucnak/telebot)
 
+## Usage
+Download pre-built binary in [Release](https://github.com/star-39/moe_music_bot/releases)
+```
+./moe_music_bot [YOUR_BOT_API]
+```
+Please note that it runs ONLY on Linux or macOS systems!
+
+If you are using Windows, please use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+
+
 ## How to build
 To build on Linux or macOS systems, you need above dependencies pre-installed.
 
@@ -26,10 +36,6 @@ go get -u gopkg.in/tucnak/telebot.v2
 go build
 ```
 
-## Usage
-```
-./moe_music_bot [YOUR_BOT_API]
-```
 
 ## License
 The GPL V3 License
