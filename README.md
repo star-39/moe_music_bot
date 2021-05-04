@@ -20,6 +20,15 @@ Please note that it runs ONLY on Linux or macOS systems!
 If you are using Windows, please use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 
 
+## Telegram Use Example
+> /help
+
+> /set transcode yes
+
+> /set bitrate 256k
+
+> /up /home/wsl/Music
+
 ## How to build
 To build on Linux or macOS systems, you need above dependencies pre-installed.
 
