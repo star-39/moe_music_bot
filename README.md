@@ -9,10 +9,6 @@ Download pre-built binary in [Release](https://github.com/star-39/moe_music_bot/
 ```
 ./moe_music_bot [YOUR_BOT_API]
 ```
-Please note that it runs ONLY on Linux or macOS systems!
-
-If you are using Windows, please use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
-
 
 ## Telegram Use Example
 > /help
@@ -27,24 +23,26 @@ If you are using Windows, please use [WSL](https://docs.microsoft.com/en-us/wind
 ### Build dependencies
 * cc
 * pkg-config
-* taglib
 * [telebot](https://github.com/tucnak/telebot)
+* [tag](https://github.com/dhowden/tag)
 
 To build on Linux or macOS systems, you need above dependencies pre-installed.
 
 To install on Fedora / RHEL / CentOS
 ```
-dnf install gcc pkg-config taglib-devel
+dnf install golang gcc pkg-config taglib-devel
 ```
 To install on Ubuntu / Debian
 ```
-apt install gcc pkg-config libtagc0-dev
+apt install golang gcc pkg-config libtagc0-dev
 ```
 
 Now you can start to build the go module
 ```
 git clone https://github.com/star-39/moe_music_bot && cd moe_music_bot
+go mode init moe_music_bot
 go get -u gopkg.in/tucnak/telebot.v2
+go get -u https://github.com/dhowden/tag
 go build
 ```
 
