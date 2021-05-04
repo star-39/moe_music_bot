@@ -1,14 +1,11 @@
 package main
 
-// #cgo pkg-config: taglib
-// #cgo LDFLAGS: -ltag_c
-// #include <stdlib.h>
-// #include <tag_c.h>
-import "C"
 import (
 	"errors"
-	"unsafe"
+	"os"
 )
+
+import "github.com/dhowden/tag"
 
 type musicTag struct {
 	title     string
@@ -17,34 +14,19 @@ type musicTag struct {
 }
 
 func ReadFileAndTag(filename string) (*musicTag, error) {
-
-	cFileName := C.CString(filename)
-	defer C.free(unsafe.Pointer(cFileName))
-
-	cFile := C.taglib_file_new(cFileName)
-	defer C.taglib_file_free(cFile)
-
-	if cFile == nil {
-		return nil, errors.New("invalid")
+	file, err := os.Open(filename)
+	if err != nil {
+		return nil, errors.New("error opening : " + filename)
+	}
+	defer file.Close()
+	tags, err2 := tag.ReadFrom(file)
+	if err2 != nil {
+		return nil, errors.New("error reading tag : " + filename)
 	}
 
-	cTag := C.taglib_file_tag(cFile)
-
-	cTitleName := C.taglib_tag_title(cTag)
-	titleName := C.GoString(cTitleName)
-	defer C.free(unsafe.Pointer(cTitleName))
-
-	cPerformerName := C.taglib_tag_artist(cTag)
-	performerName := C.GoString(cPerformerName)
-	defer C.free(unsafe.Pointer(cPerformerName))
-
-	cAlbumName := C.taglib_tag_album(cTag)
-	albumName := C.GoString(cAlbumName)
-	defer C.free(unsafe.Pointer(cAlbumName))
-
 	return &musicTag{
-		title:     titleName,
-		performer: performerName,
-		album:     albumName,
+		title:     tags.Title(),
+		performer: tags.Artist(),
+		album:     tags.Album(),
 	}, nil
 }
