@@ -26,6 +26,11 @@ go get -u gopkg.in/tucnak/telebot.v2
 go build
 ```
 
+## Usage
+```
+./moe_music_bot [YOUR_BOT_API]
+```
+
 ## License
 The GPL V3 License
 
