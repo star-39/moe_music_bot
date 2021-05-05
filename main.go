@@ -25,6 +25,7 @@ func main() {
 	} else {
 		apiToken = os.Args[1]
 	}
+
 	b, err := tb.NewBot(tb.Settings{
 		Token:  apiToken,
 		Poller: &tb.LongPoller{Timeout: 10 * time.Second},
@@ -45,6 +46,7 @@ func main() {
 	b.Handle("/help", func(m *tb.Message) {
 		commandHelp(m, b)
 	})
+
 	b.Start()
 }
 
@@ -108,8 +110,10 @@ func commandHelp(m *tb.Message, b *tb.Bot) {
 	b.Send(m.Chat,
 		"/up <directory>\n"+
 			"Upload all musics from directory (recursively)\n\n"+
+			"/set\n"+
+			"Print current settings\n\n"+
 			"/set transcode [yes|no]\n"+
 			"Transcode to opus 192k\n\n"+
 			"/set bitrate <bitrate>\n"+
-			"bitrate should end with 'k' !!")
+			"bitrate should end with 'k', eg. 256k")
 }
