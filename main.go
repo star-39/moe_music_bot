@@ -22,6 +22,7 @@ func main() {
 		println("Please enter your Telegram BOT API token:")
 		apiToken, _ = reader.ReadString('\n')
 		apiToken = strings.TrimSuffix(apiToken, "\n")
+		apiToken = strings.TrimSuffix(apiToken, "\r")
 	} else {
 		apiToken = os.Args[1]
 	}
