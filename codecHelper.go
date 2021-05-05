@@ -3,11 +3,10 @@ package main
 import (
 	"os"
 	"os/exec"
-	"path"
 	"path/filepath"
 )
 
-var embedFFMpeg = "OFF"
+//var embedFFMpeg = "OFF"
 var ffmpegPath = "ffmpeg"
 
 // opus only, it's the best, and Telegram supports it across all devices.
@@ -32,9 +31,6 @@ func transcodeAudio(fileName string, bitrate string) (string, error) {
 }
 
 func checkFFMpeg() error {
-	if embedFFMpeg == "ON" {
-		ffmpegPath = path.Join(os.TempDir(), "_temp_ffmpeg")
-	}
 	cmd := exec.Command(ffmpegPath)
 	err := cmd.Run()
 	if err != nil {
