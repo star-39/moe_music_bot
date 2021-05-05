@@ -4,7 +4,6 @@ package main
 
 import (
 	_ "embed"
-	"io/ioutil"
 	"os"
 	"os/signal"
 	"path"
@@ -25,7 +24,7 @@ func init() {
 
 	println("This binary is built with embedded FFMpeg, extracting to ", ffmpegPath)
 
-	ioutil.WriteFile(ffmpegPath, ffmpeg_bin, 0755)
+	os.WriteFile(ffmpegPath, ffmpeg_bin, 0755)
 
 	signal.Notify(signalChan, os.Interrupt)
 	go onExit()
