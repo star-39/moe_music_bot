@@ -10,7 +10,7 @@ build:
 	$(GO) build
 
 with-ffmpeg:
-	$(GO) build -tags embed_ffmpeg -ldflags="-X main.embedFFMpeg=ON"
+	$(GO) build -tags embed_ffmpeg
 
 clean:
 	rm moe_music_bot

@@ -20,7 +20,7 @@ func init() {
 	if runtime.GOOS == "windows" {
 		ffmpegPath = path.Join(os.TempDir(), "_temp_ffmpeg.exe")
 	} else {
-		ffmpegPath = path.Join(os.TempDir(), "_temp_ffmpeg.exe")
+		ffmpegPath = path.Join(os.TempDir(), "_temp_ffmpeg")
 	}
 
 	println("This binary is built with embedded FFMpeg, extracting to ", ffmpegPath)
