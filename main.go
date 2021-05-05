@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	tb "gopkg.in/tucnak/telebot.v2"
 	"log"
 	"os"
@@ -15,14 +16,26 @@ var transcodeToOpus = false
 var transcodeBitrate = "192k"
 
 func main() {
+	apiToken := ""
+	if len(os.Args) == 1 {
+		reader := bufio.NewReader(os.Stdin)
+		println("Please enter your Telegram BOT API token:")
+		apiToken, _ = reader.ReadString('\n')
+		apiToken = strings.TrimSuffix(apiToken, "\n")
+	} else {
+		apiToken = os.Args[1]
+	}
 	b, err := tb.NewBot(tb.Settings{
-		Token:  os.Args[1],
+		Token:  apiToken,
 		Poller: &tb.LongPoller{Timeout: 10 * time.Second},
 	})
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
+	println("Server OK. You are authorized as: ", b.Me.Username)
+	println("The bot is now started.")
+
 	b.Handle("/set", func(m *tb.Message) {
 		commandSet(m, b)
 	})
