@@ -11,7 +11,6 @@ var ffmpegPath = "ffmpeg"
 
 // opus only, it's the best, and Telegram supports it across all devices.
 func transcodeAudio(fileName string, bitrate string) (string, error) {
-	println(ffmpegPath)
 	ffErr := checkFFMpeg()
 	if ffErr != nil {
 		return "", ffErr
