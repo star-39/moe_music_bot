@@ -20,8 +20,6 @@ func transcodeAudio(fileName string, bitrate string) (string, error) {
 	tempDir := os.TempDir()
 	fileBaseName := filepath.Base(fileName)
 	outputFileName := filepath.Join(tempDir, "_temp_"+fileBaseName+".opus")
-	print(fileBaseName)
-	println(outputFileName)
 
 	cmd := exec.Command(ffmpegPath, "-i", fileName, "-c:a", "libopus",
 		"-b:a", bitrate, "-y", outputFileName)
