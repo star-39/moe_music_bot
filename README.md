@@ -19,31 +19,28 @@ Download pre-built binary in [Release](https://github.com/star-39/moe_music_bot/
 
 > /up /home/wsl/Music
 
-## How to build
-### Build dependencies
-* cc
-* pkg-config
-* [telebot](https://github.com/tucnak/telebot)
-* [tag](https://github.com/dhowden/tag)
-
-To build on Linux or macOS systems, you need above dependencies pre-installed.
-
-To install on Fedora / RHEL / CentOS
-```
-dnf install golang gcc pkg-config taglib-devel
-```
-To install on Ubuntu / Debian
-```
-apt install golang gcc pkg-config libtagc0-dev
-```
-
-Now you can start to build the go module
+## How to Build
+* Go 1.13 or above is required, if you want to embed ffmpeg, 1.16 or above is required.
 ```
 git clone https://github.com/star-39/moe_music_bot && cd moe_music_bot
 go mode init moe_music_bot
 go get -u gopkg.in/tucnak/telebot.v2
 go get -u https://github.com/dhowden/tag
 go build
+```
+
+If you are on Linux or macOS, you can simply use the Makefile
+```
+make
+```
+
+You can also embed a ffmpeg executable binary, put file `ffmpeg` in current directory and run:
+```
+go build -tags embed_ffmpeg
+```
+or
+```
+make with-ffmpeg
 ```
 
 

@@ -1,10 +1,12 @@
 GO=go
 
 
-all: build
+all: init build
 
 init:
 	$(GO) mod init moe_music_bot
+	$(GO) get -u gopkg.in/tucnak/telebot.v2
+	$(GO) get -u https://github.com/dhowden/tag
 
 build:
 	$(GO) build
